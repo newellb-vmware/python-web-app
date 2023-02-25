@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flaskontap
+  description: Tanzu Python Flask Web App
+  tags:
+    - app-accelerator
+    - python
+    - flask
+    - web
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=flaskontap'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-team
