@@ -53,3 +53,6 @@ Tiltfile
 
 ### Accelerator ###
 accelerator-log.md
+
+### Python Venv ###
+venv/
