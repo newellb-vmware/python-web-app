@@ -1,7 +1,7 @@
 accelerator:
   displayName: Tanzu Python Flask Web App
   description: A sample Python Flask web application built with Tanzu supply-chain
-  iconUrl: pythonlogo.png
+  iconUrl: https://raw.githubusercontent.com/fullaware/flaskontap/main/pythonlogo.png
   tags:
   - python
   - flask
