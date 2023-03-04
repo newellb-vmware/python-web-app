@@ -4,7 +4,6 @@ metadata:
   name: flaskontap
   labels:
     apps.tanzu.vmware.com/workload-type: web
-    apps.tanzu.vmware.com/language: "python"
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/auto-configure-actuators: "true"
     app.kubernetes.io/part-of: flaskontap
@@ -16,6 +15,7 @@ spec:
   - name: testing_pipeline_matching_labels
     value:
       apps.tanzu.vmware.com/pipeline: test
+      apps.tanzu.vmware.com/language: "python"
   source:
     git:
       url: https://github.com/fullaware/flaskontap
