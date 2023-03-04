@@ -2,11 +2,12 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: flaskontap
-  description: Tanzu Python Flask Web App
+  description: Python Flask Web App
   tags:
     - app-accelerator
     - python
     - flask
+    - gunicorn
     - web
     - tanzu
   annotations:

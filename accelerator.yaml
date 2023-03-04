@@ -1,0 +1,25 @@
+accelerator:
+  displayName: Tanzu Python Flask Web App
+  description: A sample Python Flask web application built with Tanzu supply-chain
+  iconUrl: pythonlogo.png
+  tags:
+  - python
+  - flask
+  - web
+  - tanzu
+
+  # Accelerator GUI
+
+engine:
+  merge:
+    - include: [ "requirements.txt", "LICENSE", "NOTICE", ".gitignore" ]
+    - include: [ "README.md" ]
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: flaskontap
+          with: "#artifactId"
+    # TAP files
+    
+
+    - type: Provenance
