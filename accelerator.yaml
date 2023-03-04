@@ -12,14 +12,44 @@ accelerator:
 
 engine:
   merge:
-    - include: [ "requirements.txt", "LICENSE", "NOTICE", ".gitignore" ]
+    - include: [ "**/*" ]
+      exclude: [ "config/*.yaml", "Tiltfile", "README.md", "catalog/*.yaml", ".github/" ]
+    - include: [ "Tiltfile" ]
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: flaskontap
+          with: "#artifactId.toLowerCase()"
+      - type: ReplaceText
+        substitutions:
+        - text: your-registry.io/project
+          with: "#repositoryPrefix"
+
+    - include: [ "config/*.yaml" ]
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: ": flaskontap"
+          with: "': ' + #artifactId.toLowerCase()"
+      - merge:
+        - type: InvokeFragment
+          reference: tap-workload
+        - include: [ "**" ]
+        onConflict: UseFirst
+
     - include: [ "README.md" ]
       chain:
       - type: ReplaceText
         substitutions:
         - text: flaskontap
           with: "#artifactId"
-    # TAP files
+
+    - include: [ "catalog/*.yaml" ]
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: flaskontap
+          with: "#artifactId"
     
 
     - type: Provenance
