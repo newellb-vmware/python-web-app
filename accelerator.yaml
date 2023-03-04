@@ -16,10 +16,13 @@ accelerator:
       defaultValue: dev.local
       required: true
 
+  imports:
+    - name: tap-workload
+
 engine:
   merge:
     - include: [ "**/*" ]
-      exclude: [ "config/*.yaml", "Tiltfile", "README.md", "catalog/*.yaml", ".github/" ]
+      exclude: [ "config/*.yaml", "Tiltfile", "README.md", "catalog/*.yaml" ]
     - include: [ "Tiltfile" ]
       chain:
       - type: ReplaceText
@@ -56,5 +59,3 @@ engine:
         substitutions:
         - text: flaskontap
           with: "#artifactId"
-    
-    - type: Provenance
