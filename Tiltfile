@@ -17,7 +17,11 @@ k8s_custom_deploy(
     deps=[''],
     container_selector='workload',
     live_update=[
-      sync('./target/classes', '/workspace/BOOT-INF/classes')
+      sync('.', '/workspace/'),
+      run(
+            'pip install -r /workspace/requirements.txt',
+            trigger=['./workspace/requirements.txt']
+        )
     ]
 )
 

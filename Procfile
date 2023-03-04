@@ -1,1 +1,1 @@
-web: FLASK_APP=web.py python3 -m flask run --host=0.0.0.0 --port=$PORT
+web: gunicorn -b :8080 web:app --log-file=- --reload --access-logfile=- --workers=2 --threads=4 --worker-class=gthread
