@@ -4,6 +4,7 @@
 .gitmodules
 **/.gitattributes
 **/.gitignore
+.gitignore
 
 ### Maven ###
 target/
@@ -56,3 +57,4 @@ accelerator-log.md
 
 ### Python Venv ###
 venv/
+__pycache__/
