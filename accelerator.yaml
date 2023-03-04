@@ -9,7 +9,13 @@ accelerator:
   - tanzu
 
   # Accelerator GUI
-
+options:
+  - name: repositoryPrefix
+    inputType: text
+    label: Prefix for the container image repository
+    defaultValue: dev.local
+    required: true
+    
 engine:
   merge:
     - include: [ "**/*" ]
