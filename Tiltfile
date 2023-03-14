@@ -1,18 +1,18 @@
-SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='dev.local/flaskontap-source')
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='dev.local/python-web-app-source')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 OUTPUT_TO_NULL_COMMAND = os.getenv("OUTPUT_TO_NULL_COMMAND", default=' > /dev/null ')
 allow_k8s_contexts('taplab')
 
 k8s_custom_deploy(
-    'flaskontap',
+    'python-web-app',
     apply_cmd="tanzu apps workload apply -f config/workload.yaml --update-strategy replace --debug --live-update" +
                " --local-path " + LOCAL_PATH +
                " --source-image " + SOURCE_IMAGE +
                " --namespace " + NAMESPACE +
                " --yes " +
                OUTPUT_TO_NULL_COMMAND +
-               " && kubectl get workload flaskontap --namespace " + NAMESPACE + " -o yaml",
+               " && kubectl get workload python-web-app --namespace " + NAMESPACE + " -o yaml",
     delete_cmd="tanzu apps workload delete -f config/workload.yaml --namespace " + NAMESPACE + " --yes",
     deps=[''],
     container_selector='workload',
@@ -25,5 +25,5 @@ k8s_custom_deploy(
     ]
 )
 
-k8s_resource('flaskontap', port_forwards=["8080:8080"],
-            extra_pod_selectors=[{'carto.run/workload-name': 'flaskontap', 'app.kubernetes.io/component': 'run'}])
+k8s_resource('python-web-app', port_forwards=["8080:8080"],
+            extra_pod_selectors=[{'carto.run/workload-name': 'python-web-app', 'app.kubernetes.io/component': 'run'}])

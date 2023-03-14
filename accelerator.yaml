@@ -1,7 +1,7 @@
 accelerator:
   displayName: Tanzu Python Flask Web App
   description: A sample Python Flask web application built with Tanzu supply-chain
-  iconUrl: https://raw.githubusercontent.com/fullaware/flaskontap/main/pythonlogo.png
+  iconUrl: https://raw.githubusercontent.com/fullaware/python-web-app/main/pythonlogo.png
   tags:
   - python
   - flask
@@ -27,7 +27,7 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: flaskontap
+        - text: python-web-app
           with: "#artifactId.toLowerCase()"
       - type: ReplaceText
         substitutions:
@@ -38,7 +38,7 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: ": flaskontap"
+        - text: ": python-web-app"
           with: "': ' + #artifactId.toLowerCase()"
       - merge:
         - type: InvokeFragment
@@ -50,12 +50,12 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: flaskontap
+        - text: python-web-app
           with: "#artifactId"
 
     - include: [ "catalog/*.yaml" ]
       chain:
       - type: ReplaceText
         substitutions:
-        - text: flaskontap
+        - text: python-web-app
           with: "#artifactId"
