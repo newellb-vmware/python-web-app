@@ -13,6 +13,6 @@ spec:
       autoscaling.knative.dev/minScale: "1"
   source:
     git:
-      url: https://github.com/newellb-vmware/python-web-app
+      url: your-registry.io/project
       ref:
         branch: main
